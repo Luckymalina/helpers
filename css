@@ -14,3 +14,44 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+// /Обрезка длинных названий 
+
+//   Точечная линия между параметром и единицей 
+<div class="product-card-character__item clearfix">
+    <span class="product-character">Мощность, Вт:</span>
+    <span class="product-character-unit">550</span>
+</div>
+
+.product-card-character__item {
+  height: 2.6em;
+  position: relative;
+}
+.product-card-character__item::after {
+  position: absolute;
+  content: '';
+  bottom: 12px;
+  left: 0;
+  z-index: 1;
+  height: 1px;
+  width: 100%;
+  border-bottom: 1px dotted #ccc;
+}
+.product-card-character__item .product-character {
+  float: left;
+  background: #fff;
+  padding-right: 4px;
+  font-size: 13px;
+  line-height: 36px;
+  position: relative;
+  z-index: 10;
+}
+.product-card-character__item .product-character-unit {
+  float: right;
+  background: #fff;
+  padding-left: 4px;
+  font-size: 13px;
+  line-height: 36px;
+  position: relative;
+  z-index: 10;
+}
+//   /Точечная линия между параметром и единицей 
