@@ -1,4 +1,4 @@
-//анимация при добавлении товара в корзину
+// Анимация при добавлении товара в корзину
 http://webresourcesdepot.com/fly-to-basket-effect-with-jquery/
 
 // Шаблоны Bootstrap
@@ -7,11 +7,11 @@ http://startbootstrap.com/template-categories/all/
 // UNminify
 http://unminify.com/
 
-//Контролы input[type=number] показать
+// Контролы input[type=number] показать
 http://stackoverflow.com/questions/25194631/is-it-possible-to-always-show-up-down-arrows-for-input-number
 
-//Проверить чекбокс и выполнить действие
+// Проверить чекбокс и выполнить действие
 http://webgyry.info/checkbox-check-jquery-javascript
 
-//Прелоадер
+/ Прелоадер
 http://popel-studio.com/blog/article/preloader-saita-svoimi-rukami.html
