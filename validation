@@ -1,0 +1,141 @@
+ //Валидации в формах
+    //Валидация при отправке двух форм(Задать свой вопрос)
+    $('.support-product__form').on('submit', function(e){
+        e.preventDefault();
+        var error = 0;
+        //Проверка кол-ва символов в inpute, если 0 символов, то красная обводка.
+        //Так же с остальными всеми inputами
+        if($(this).find('#supportUserName').val().length == 0){
+            error = 1;
+            $(this).find('#supportUserName').css('border', '1px solid red')
+        }
+        else{
+            $(this).find('#supportUserName').css('border','1px solid #e8e8e8')
+        }
+        if($(this).find('#supportUserMail').val().length == 0){
+            error = 1;
+            $(this).find('#supportUserMail').css('border', '1px solid red')
+        }
+        else{
+            $(this).find('#supportUserMail').css('border','1px solid #e8e8e8')
+        }
+        if($(this).find('#supportUserMsg').val().length == 0){
+            error = 1;
+            $(this).find('#supportUserMsg').css('border', '1px solid red')
+        }
+        else{
+            $(this).find('#supportUserMsg').css('border','1px solid #e8e8e8')
+        }
+        //Если есть ошибка, не отправляем форму
+        if(error == 1){
+            return;
+        }
+        else{
+            //если нет ошибки, то выводим сообщение об отправке и прячем форму
+            //Сюда надо ajax дописать
+            $('.support-product__form-wrap').hide();
+            $('.support-product__form--sended').show();
+        }
+    });
+    //Прячем при открытии попапов ошибку(можно через CSS тож запрятать)
+    $(document).on('click', '.product-card-request-link, .fast-buy__btn', function(){
+        $('.text-error').hide();
+    });
+    $(document).on('click', '#go-order', function(){
+        if($(this).parent().parent().children().val().length == 0){
+            $('.alert').show();
+            return;
+        }
+        else{
+            $('.order-form').hide();
+            $('.input-phone').hide();
+            $('.order-thanks').show();
+        }
+    });
+
+    //Проверка формы ПО ЗАПРОСУ при нажатии на кнопку отправки
+    $(document).on('click', '.request-price-modal-btn', function(){
+        //Проверка открыт ли попап или нет
+        if($('#request-price-modal-phone').is(':visible')){
+            if($('#request-price-modal-phone').val().length == 0){
+                //Проверка кол-ва символов в inpute, если 0 символов, то красная обводка.
+                $('#request-price-modal-phone').css('border', '1px solid red')
+                $('.text-error').show();
+                return;
+            }
+            else{
+                //если нет ошибки, то выводим сообщение об отправке и прячем форму
+                //Сюда надо ajax дописать
+                $('.request-price-modal-no-send').hide();
+                $('.request-price-modal-sended').show();
+            }
+        }
+
+    });
+    $(document).on('click', '.fast-buy-modal-btn', function(){
+        //Проверка открыт ли попап или нет
+        if($('#fast-buy-modal-phone').is(':visible')){
+            if($('#fast-buy-modal-phone').val().length == 0){
+                //Проверка кол-ва символов в inpute, если 0 символов, то красная обводка.
+                $('#fast-buy-modal-phone').css('border', '1px solid red')
+                $('.text-error').show();
+                return;
+            }
+            else{
+                //если нет ошибки, то выводим сообщение об отправке и прячем форму
+                //Сюда надо ajax дописать
+                $('.fast-buy-modal-no-send').hide();
+                $('.fast-buy-modal-sended').show();
+            }
+        }
+
+    });
+
+    //Проверка enter
+    $('input').keypress(function (e) {
+        if (e.which == 13) {
+            //Проверка открыт ли попап или нет
+            if($('#request-price-modal-phone').is(':visible')){
+                //Проверка кол-ва символов в inpute, если 0 символов, то красная обводка.
+                if(($('#request-price-modal-phone').val().indexOf('_') > -1) == true){
+                    $('#request-price-modal-phone').css('border', '1px solid red')
+                    $('.text-error').show();
+                    return;
+                }
+                else{
+                    //если нет ошибки, то выводим сообщение об отправке и прячем форму
+                    //Сюда надо ajax дописать
+                    $('.request-price-modal-no-send').hide();
+                    $('.request-price-modal-sended').show();
+                }
+            }
+            //Проверка открыт ли попап или нет
+            if($('#fast-buy-modal-phone').is(':visible')){
+
+                //Проверка кол-ва символов в inpute, если 0 символов, то красная обводка.
+                if(($('#fast-buy-modal-phone').val().indexOf('_') > -1) == true){
+                    $('#fast-buy-modal-phone').css('border', '1px solid red')
+                    $('.text-error').show();
+                    return;
+                }
+                else{
+                    //если нет ошибки, то выводим сообщение об отправке и прячем форму
+                    //Сюда надо ajax дописать
+                    $('.fast-buy-modal-no-send').hide();
+                    $('.fast-buy-modal-sended').show();
+                }
+            }
+            if((location.href.indexOf('setup') > -1) == true){
+                if(($('#go-order').parent().parent().children().val().indexOf('_') > -1) == true){
+                    $('.alert').show();
+                    return;
+                }
+                else{
+                    $('.order-form').hide();
+                    $('.input-phone').hide();
+                    $('.order-thanks').show();
+                }
+            }
+
+        }
+    });
